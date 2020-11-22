@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    <!--环境配置-->
+    <environments default="mysql">
+        <!--使用MySQL环境-->
+        <environment id="mysql">
+            <!--使用JDBC类型事务管理器-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--使用连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://localhost:3306/user"/>
+                <property name="username" value="root"></property>
+                <property name="password" value="123456"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    
+    <!--加载映射配置-->
+    <mappers>
+        <!--指定映射文件的位置-->
+        <mapper resource="mapper/UserMapper.xml"/>
+<!--&lt;!&ndash;        <package name="com.sjt.user.dao"/>&ndash;&gt; 扫描注解所在的包-->
+    </mappers>
+</configuration>
